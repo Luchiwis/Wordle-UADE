@@ -3,22 +3,10 @@
     "usuario": "juan",
     "contrasena": "password123",
     "puntaje": 120,
+    "total_partidas":0,
+    "total_primeros_turnos":0,
     "palabras_usadas": [
       "perro"
     ]
-  },
-  {
-    "usuario": "anas",
-    "contrasena": "clave456",
-    "puntaje": 200,
-    "palabras_usadas": [
-      "cielo"
-    ]
-  },
-  {
-    "usuario": "juancruz",
-    "contrasena": "Hola12345",
-    "puntaje": 0,
-    "palabras_usadas": []
   }
 ]

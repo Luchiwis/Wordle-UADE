@@ -1,0 +1,2 @@
+def registro():
+    pass
