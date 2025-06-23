@@ -1,7 +1,7 @@
 import random
 import time
 import math
-from gestion_datos import obtener_palabras
+from datos import obtener_palabras
 
 def calcular_tiempo_total(tiempo_inicial) -> tuple:
     tiempo_final = time.time()
@@ -31,7 +31,7 @@ def acomodar_jugadores(jugadores: list[dict]) -> list:
     """
     la funcion devuelve una lista con los jugadores ordenados de mayor total de primeros turnos a menor, para evitar que no toque siempre el mismo jugador como primero
     """
-    
+
     # Crear una copia de la lista para no modificar la original
     jugadores_ordenados = jugadores.copy()
     

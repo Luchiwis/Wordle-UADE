@@ -14,3 +14,8 @@ def obtener_color(color) -> str:
 
 def cambiar_color(texto, color):
     return (obtener_color(color) + texto + obtener_color("Defecto")) if texto != "" else ""
+
+
+if __name__ == "__main__":
+    letras_adivinadas = ['_', '\x1b[32mE\x1b[39m', '\x1b[32mR\x1b[39m', '\x1b[32mD\x1b[39m', '\x1b[32mI\x1b[39m']
+    print(f"| {(letras_adivinadas):^30} |")

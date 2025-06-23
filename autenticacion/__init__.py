@@ -9,7 +9,11 @@ import re
 
 
 # Archivo donde se guardan los datos
-ARCHIVO_USUARIOS = './Usuarios.json'
+if __name__ == "__main__":
+    ARCHIVO_USUARIOS = '../datos/Usuarios.json'
+else:
+    ARCHIVO_USUARIOS = './datos/Usuarios.json'
+
 
 # Cargar los usuarios del archivo JSON (si existe)
 def cargar_usuarios():
@@ -90,9 +94,12 @@ def login():
             print("💡La contraseña deberá tener un minimo de 8 caracteres, al menos una mayúscula, una minúscula y un número💡")
             contrasena = input("Ingrese contraseña: ")
         nuevo_usuario = {
+            "id" : len(usuarios)+1,
             "usuario": nombre,
             "contrasena": contrasena,
             "puntaje": 0,
+            "total_partidas": 0,
+            "total_primeros_turnos": 0,
             "palabras_usadas": []
         }
         usuarios.append(nuevo_usuario)

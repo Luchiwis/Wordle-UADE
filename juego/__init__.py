@@ -1,6 +1,6 @@
 import time
 import juego.logica as logica
-import UI
+from UI.ronda import ronda
 
 
 def partida(jugadores: list[dict], dificultad: int) -> dict:
@@ -13,23 +13,24 @@ def partida(jugadores: list[dict], dificultad: int) -> dict:
     palabras_usadas = [palabra_usada for j in jugadores for palabra_usada in j["palabras_usadas"]]
     palabra_adivinar = logica.conseguir_palabra(dificultad, palabras_usadas)
     arriesgos = []  # palabras arriesgadas
-    adivinado = []  # letras adivinadas
+    letras_adivinadas = ["_" for _ in range(dificultad)]  # letras adivinadas
     tiempo_inicial = time.time()
     partida_terminada = False
     arriesgo = ""
     turno = 0
     ganador = None
+    shows = []
     
     # crear key intentos:0 para contabilizar individualmente los arriesgos de cada jugador
     for jugador in jugadores:
         jugador["intentos"] = 0
 
-
     # ejecución de la partida
     while not partida_terminada:
         jugador = jugadores[turno]
-        arriesgo = UI.ronda(palabra_adivinar, dificultad, jugador, adivinado, arriesgos)
+        arriesgo, letras_adivinadas = ronda(palabra_adivinar, dificultad, jugador, letras_adivinadas, arriesgos, shows) #funcion UI
         arriesgos.append(arriesgo)
+        jugador["intentos"] += 1
 
         # chequear si alguien ganó
         if arriesgo == palabra_adivinar:
@@ -40,15 +41,19 @@ def partida(jugadores: list[dict], dificultad: int) -> dict:
             partida_terminada = True
         else:
             # la partida continua
-            jugador["intentos"] += 1
             turno = (turno + 1) % len(jugadores)
+
+    #sumar al total de partidas jugadas
+    for jugador in jugadores:
+        jugador["total_partidas"] += 1
 
     datos_partida = {
         "tiempo_total": logica.calcular_tiempo_total(tiempo_inicial),
         "ganador": ganador,
         "jugadores": jugadores,
         "arriesgos": arriesgos,
-        "adivinado": adivinado
+        "letras_adivinadas": letras_adivinadas,
+        "palabra": palabra_adivinar
     }
 
     return datos_partida
