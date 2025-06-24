@@ -64,23 +64,14 @@ python main.py
 
 ---
 
-## 🧪 Testing
-
-Los tests están ubicados en la carpeta `testing/` y se pueden ejecutar con:
-
-```bash
-python -m unittest discover -s testing
-```
-
----
-
 ## 🧰 Funcionalidades
 
 - Inicio de sesión y gestión de usuarios
 - Juego de adivinanza por rondas
 - Selección de dificultad (5, 6 o 7 letras)
 - Ranking de jugadores por puntaje
-- Decoradores y helpers para mostrar información
+- Estadisticas globales
+- Decoradores y helpers para mostrar información y evitar errores
 - Consola enriquecida con recuadros de texto
 
 ---
