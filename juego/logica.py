@@ -19,12 +19,24 @@ def conseguir_palabra(dificultad, usadas: list[str]) -> list:
     
     # restar utilizadas utilizando sets
     arr = set(obtener_palabras(dificultad)) - set(usadas)
+    if not arr:
+        print(f"USTED YA COMPLETÓ TODAS LAS PALABRAS DE LA DIFICULTAD {dificultad}")
+        print("VAYA A LABURAR")
+        if dificultad == 5:
+            arr = ["ganar"]
+        elif dificultad == 6:
+            arr = ["ganare"]
+        else:
+            arr = ["ganador"]
     # reconvertir a lista
     arr = list(arr)
     # seleccionar palabra aleatoriamente
     palabra = arr[random.randint(0, len(arr) - 1)].upper()
     # sacar el salto de linea
     palabra = palabra.replace("\n","")
+    #Print de la palabra para test
+    print(palabra)
+    
     return palabra
 
 def acomodar_jugadores(jugadores: list[dict]) -> list:
@@ -39,8 +51,8 @@ def acomodar_jugadores(jugadores: list[dict]) -> list:
     n = len(jugadores_ordenados)
     for i in range(n):
         for j in range(0, n - i - 1):
-            if jugadores_ordenados[j]["total_primeros_turnos"] < jugadores_ordenados[j + 1]["total_primeros_turnos"]:
+            if (jugadores_ordenados[j]["total_partidas"] / (jugadores_ordenados[j]["total_primeros_turnos"]+1)) > (jugadores_ordenados[j+1]["total_partidas"] / (jugadores_ordenados[j + 1]["total_primeros_turnos"]+1)):
                 # Intercambiar elementos
                 jugadores_ordenados[j], jugadores_ordenados[j + 1] = jugadores_ordenados[j + 1], jugadores_ordenados[j]
     
-    return jugadores_ordenados
+    return jugadores_ordenados[-1::-1]

@@ -2,7 +2,7 @@
 Funciones relacionadas con la interaccion del usuario
 """
 from UI.login import menu_login
-from UI.ranking import ranking
+from UI.ranking import estadisticas
 from UI.alertas import recuadro
 from UI.dificultad import seleccionar_dificultad
 
@@ -23,7 +23,7 @@ def opciones_menu(usuarios:list[dict], dificultad:int) -> dict:
         "4. Estadisticas",
         "5. Cerrar sesión",
         "6. Salir",
-        ancho=32,
+        ancho=60,
         alinear="izquierda",
         margen=1
     )
@@ -39,7 +39,7 @@ def opciones_menu(usuarios:list[dict], dificultad:int) -> dict:
         "4. Estadisticas",
         "5. Cerrar sesión",
         "6. Salir",
-        ancho=32,
+        ancho=60,
         alinear="izquierda",
         margen=1
     )
@@ -68,7 +68,7 @@ def menu(config:dict = { } ) -> dict:
     usuarios = config.get("jugadores", [])
     while True:
         opciones_menu(usuarios, dif)
-        opcion = input("Seleccione una opción (1-5): ")
+        opcion = input("Seleccione una opción (1-6): ")
         if opcion == "1":
             if len(usuarios) > 0:
                 usuarios = []
@@ -84,7 +84,7 @@ def menu(config:dict = { } ) -> dict:
         elif opcion == "3":
             dif = seleccionar_dificultad()
         elif opcion == "4":
-            ranking()
+            estadisticas()
         elif opcion == "5":
             usuarios = []
             recuadro("CERRANDO SESION DE USUARIOS", ancho=60)

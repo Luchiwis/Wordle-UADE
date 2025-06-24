@@ -25,6 +25,9 @@ def partida(jugadores: list[dict], dificultad: int) -> dict:
     for jugador in jugadores:
         jugador["intentos"] = 0
 
+    if len(jugadores) > 1:
+        jugadores[0]["total_primeros_turnos"] += 1
+
     # ejecución de la partida
     while not partida_terminada:
         jugador = jugadores[turno]
@@ -53,7 +56,8 @@ def partida(jugadores: list[dict], dificultad: int) -> dict:
         "jugadores": jugadores,
         "arriesgos": arriesgos,
         "letras_adivinadas": letras_adivinadas,
-        "palabra": palabra_adivinar
+        "palabra": palabra_adivinar,
+        "dificultad": dificultad
     }
 
     return datos_partida

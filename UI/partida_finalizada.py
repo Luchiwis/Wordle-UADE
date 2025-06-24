@@ -11,14 +11,14 @@ def partida_finalizada(datos_partida: dict) -> None:
     ganador = datos_partida['ganador']
     
     # Tarjeta 1: Encabezado
-    recuadro("PARTIDA FINALIZADA", ancho=50)
+    recuadro("PARTIDA FINALIZADA", ancho=60)
     
     # Tarjeta 2: Información básica
     recuadro(
         "INFORMACIÓN GENERAL",
         f"tiempo:{tiempo_min}min {tiempo_seg}seg",
         f"palabra: {datos_partida['palabra']}",
-        ancho=50
+        ancho=60
     )
     
     # Tarjeta 3: Ganador
@@ -27,17 +27,17 @@ def partida_finalizada(datos_partida: dict) -> None:
             " GANADOR",
             f" {ganador['usuario'].upper()}",
             f" {ganador['intentos']} intentos",
-            ancho=50
+            ancho=60
         )
         
         # Tarjeta 4: Todos los jugadores
-        jugadores_lineas = [f"👥 JUGADORES ({len(datos_partida['jugadores'])})"]
+        jugadores_lineas = [f" JUGADORES ({len(datos_partida['jugadores'])})"]
         for i, jugador in enumerate(datos_partida['jugadores'], 1):
             jugadores_lineas.append(f"{i}. {jugador['usuario']} ({jugador['intentos']} intentos)")
         
-        recuadro(*jugadores_lineas, ancho=50, alinear="izquierda", margen=1)
+        recuadro(*jugadores_lineas, ancho=60, alinear="izquierda", margen=1)
     else:
-        recuadro("SIN GANADOR", ancho=50)
+        recuadro("SIN GANADOR", ancho=60)
     
     # Tarjeta 5: Intentos (si existen)
     if datos_partida['arriesgos']:
@@ -45,4 +45,4 @@ def partida_finalizada(datos_partida: dict) -> None:
         for i, intento in enumerate(datos_partida['arriesgos'], 1):
             intentos_lineas.append(f"{i}. {intento}")
         
-        recuadro(*intentos_lineas, ancho=50, alinear="izquierda", margen=1)
+        recuadro(*intentos_lineas, ancho=60, alinear="izquierda", margen=1)

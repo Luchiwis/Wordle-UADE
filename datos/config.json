@@ -1,38 +1,24 @@
 {
   "jugadores": [
     {
+      "id": 2,
+      "usuario": "mati",
+      "contrasena": "Mati1234",
+      "puntaje": 80,
+      "total_partidas": 0,
+      "total_primeros_turnos": 0,
+      "palabras_usadas": [],
+      "intentos": 0
+    },
+    {
       "id": 3,
       "usuario": "toti",
       "contrasena": "Toti1234",
-      "puntaje": 170,
-      "total_partidas": 8,
-      "total_primeros_turnos": 0,
-      "palabras_usadas": [
-        "ESCAPAN",
-        "CEROS",
-        "PLENA",
-        "ESTIRAR",
-        "INMENSO",
-        "MEMORIA",
-        "NECIA",
-        "ENTRENA"
-      ],
-      "intentos": 2
-    },
-    {
-      "id": 5,
-      "usuario": "lucho",
-      "contrasena": "Lucho123",
       "puntaje": 0,
-      "total_partidas": 2,
+      "total_partidas": 0,
       "total_primeros_turnos": 0,
-      "palabras_usadas": [
-        "ROSAS",
-        "AGUDA",
-        "GALOS",
-        "ORDEN"
-      ],
-      "intentos": 1
+      "palabras_usadas": [],
+      "intentos": 0
     }
   ],
   "dificultad": 5,

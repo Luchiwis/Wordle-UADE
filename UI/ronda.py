@@ -31,7 +31,7 @@ def ronda(palabra_adivinar: str, dificultad: int, jugador: dict, letras_adivinad
         "ARRIESGOS:",
         *arriesgos_display,  # Desempaquetar la lista
         f"QUEDAN {arriesgos_restantes} RESTANTES",
-        ancho=32,
+        ancho=60,
         alinear="centro"
     )
     arri = input("ARRIESGO: ")

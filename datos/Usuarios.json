@@ -14,29 +14,35 @@
     "id": 2,
     "usuario": "mati",
     "contrasena": "Mati1234",
-    "puntaje": 0,
-    "total_partidas": 0,
-    "total_primeros_turnos": 0,
-    "palabras_usadas": []
+    "puntaje": 200,
+    "total_partidas": 6,
+    "total_primeros_turnos": 3,
+    "palabras_usadas": [
+      "TENSO",
+      "COGEN",
+      "BOTAN",
+      "ABRIA",
+      "SALTA",
+      "FALLA"
+    ],
+    "intentos": 0
   },
   {
     "id": 3,
     "usuario": "toti",
     "contrasena": "Toti1234",
-    "puntaje": 170,
-    "total_partidas": 8,
-    "total_primeros_turnos": 0,
+    "puntaje": 120,
+    "total_partidas": 6,
+    "total_primeros_turnos": 3,
     "palabras_usadas": [
-      "ESCAPAN",
-      "CEROS",
-      "PLENA",
-      "ESTIRAR",
-      "INMENSO",
-      "MEMORIA",
-      "NECIA",
-      "ENTRENA",
-      "TONTO"
-    ]
+      "TENSO",
+      "COGEN",
+      "BOTAN",
+      "ABRIA",
+      "DOTES",
+      "AZOTE"
+    ],
+    "intentos": 0
   },
   {
     "id": 4,
@@ -51,16 +57,24 @@
     "id": 5,
     "usuario": "lucho",
     "contrasena": "Lucho123",
-    "puntaje": 0,
-    "total_partidas": 3,
-    "total_primeros_turnos": 0,
+    "puntaje": 160,
+    "total_partidas": 9,
+    "total_primeros_turnos": 4,
     "palabras_usadas": [
       "ROSAS",
       "AGUDA",
       "GALOS",
       "ORDEN",
       "TONTO",
-      "VEDADO"
+      "VEDADO",
+      "NUNCA",
+      "KODAK",
+      "SUPER",
+      "MOZAS",
+      "DOTES",
+      "AZOTE",
+      "SALTA",
+      "FALLA"
     ]
   },
   {
@@ -76,20 +90,39 @@
     "id": 7,
     "usuario": "matias",
     "contrasena": "Matias1234",
-    "puntaje": 540,
-    "total_partidas": 13,
+    "puntaje": 580,
+    "total_partidas": 18,
     "total_primeros_turnos": 0,
     "palabras_usadas": [
       "OTRAS",
       "MATAR",
       "MATAR",
-      "ESCAPAN"
+      "ESCAPAN",
+      "ENTREGA",
+      "BATALLA",
+      "HERIDOS",
+      "DIFICIL",
+      "MALICIA"
     ]
   },
   {
     "id": 8,
     "usuario": "juanc",
     "contrasena": "Juanc1234",
+    "puntaje": 30,
+    "total_partidas": 4,
+    "total_primeros_turnos": 0,
+    "palabras_usadas": [
+      "MOCOS",
+      "CAZAN",
+      "LENTA",
+      "RETOS"
+    ]
+  },
+  {
+    "id": 9,
+    "usuario": "hola",
+    "contrasena": "Holas_123",
     "puntaje": 0,
     "total_partidas": 0,
     "total_primeros_turnos": 0,

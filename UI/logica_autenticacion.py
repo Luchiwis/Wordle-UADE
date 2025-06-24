@@ -3,29 +3,11 @@
 Desde esta sección se maneja todas las funciones relacionadas con el registro de usuarios.
 """
 
-import json
-import os
 import re
+from datos import obtener_usuarios as cargar_usuarios
+from datos import guardar_usuarios
+from UI.alertas import recuadro
 
-
-# Archivo donde se guardan los datos
-if __name__ == "__main__":
-    ARCHIVO_USUARIOS = '../datos/Usuarios.json'
-else:
-    ARCHIVO_USUARIOS = './datos/Usuarios.json'
-
-
-# Cargar los usuarios del archivo JSON (si existe)
-def cargar_usuarios():
-    with open(ARCHIVO_USUARIOS, 'r') as archivo:
-        return json.load(archivo)
-
-# Guardar usuarios al archivo
-def guardar_usuarios(usuarios):
-    with open(ARCHIVO_USUARIOS, 'w') as archivo:
-        json.dump(usuarios, archivo, indent=2)
-
-# Buscar un usuario por nombre
 def buscar_usuario(usuarios, nombre):
     for usuario in usuarios:
         if usuario['usuario'] == nombre:
@@ -35,22 +17,24 @@ def buscar_usuario(usuarios, nombre):
 def validar_contrasena(contrasena):
     # Longitud entre 8 y 16
     if not re.fullmatch(r'.{8,16}$', contrasena):
-        print("❌La contraseña debe tener entre 8 y 16 caracteres.❌")
+        recuadro("La contraseña debe tener entre 8 y 16 caracteres.", ancho=60)
+        
         return False
 
     # Al menos una mayúscula
     if not re.search(r'[A-Z]+', contrasena):
-        print("❌Debe contener al menos una letra mayúscula.❌")
+        recuadro("Debe contener al menos una letra mayúscula.", ancho=60)
+        
         return False
 
     # Al menos una minúscula
     if not re.search(r'[a-z]+', contrasena):
-        print("❌Debe contener al menos una letra minúscula.❌")
+        recuadro("Debe contener al menos una letra minúscula.", ancho=60)
         return False
 
     # Al menos un número
     if not re.search(r'[0-9]+', contrasena):
-        print("Debe contener al menos un número.")
+        recuadro("Debe contener al menos un número.", ancho=60)
         return False
     print("✅Contraseña Valida✅")
     return True
@@ -61,7 +45,7 @@ def validar_usuario(nombre_usuario):
         print("✅Usuario Valido✅")
         return True
     else:
-        print("❌El usuario debe tener solo letras minúsculas y entre 4 y 20 caracteres.❌")
+        recuadro("El usuario debe tener solo letras minúsculas y entre 4 y 20 caracteres.", ancho=60)
         return False
 
 # Lógica de login
@@ -78,20 +62,25 @@ def login():
         it = 3
         while usuario['contrasena'] != contrasena:
             it -= 1
-            print(f"❌ Contraseña incorrecta. Quedan {it} intentos❌")
+            recuadro(f"Contraseña incorrecta. Quedan {it} intentos", ancho=60)
+            
             if it == 0:
-                print("❌ Demasiados intentos. El usuario se ha desconectado.❌")
+                recuadro("Demasiados intentos. El usuario se ha desconectado.", ancho=60)
+                
                 return None
             contrasena = input("Ingrese Contraseña: ")
         print(f"✅ Bienvenido de nuevo, {nombre}. Puntaje actual: {usuario['puntaje']}✅")
     else:
         #ACA APLICAREMOS RECURSIVIDAD DE PREGUNTAR SI QUEREMOS REGISTRARNOS O INICIAR SESION CON OTRO USUARIO LLAMANDO DE NUEVO A LOGIN
-        print(f"🆕 Usuario no encontrado. Creando nuevo usuario {nombre}🆕")
-        print("🔑Ahora debe ingresar su contraseña🔑")
-        print("💡La contraseña deberá tener un minimo de 8 caracteres, al menos una mayúscula, una minúscula y un número💡")
+        recuadro(f"Usuario no encontrado. Creando nuevo usuario {nombre}", ancho=60)
+        recuadro("Ahora debe ingresar su contraseña", ancho=60)
+        recuadro("La contraseña deberá tener un minimo de 8 caracteres, al menos una mayúscula, una minúscula y un número", ancho=60)
+        
+
         contrasena = input("Ingrese contraseña: ")
         while not validar_contrasena(contrasena):
-            print("💡La contraseña deberá tener un minimo de 8 caracteres, al menos una mayúscula, una minúscula y un número💡")
+            recuadro("La contraseña deberá tener un minimo de 8 caracteres, al menos una mayúscula, una minúscula y un número", ancho=60)
+            
             contrasena = input("Ingrese contraseña: ")
         nuevo_usuario = {
             "id" : len(usuarios)+1,
@@ -104,29 +93,8 @@ def login():
         }
         usuarios.append(nuevo_usuario)
         guardar_usuarios(usuarios)
-        print(f"💾 El usuario {nombre} con contraseña {contrasena} creado exitosamente.")
+        recuadro(f"El usuario {nombre} con contraseña {contrasena} fue creado exitosamente.")
+        
         usuario = nuevo_usuario
 
     return usuario  # Retornar el diccionario del usuario logueado
-
-'''
-# Prueba del login
-usuario_actual = login()
-if usuario_actual:
-    print(f"👉🏿 Puedes comenzar a jugar, {usuario_actual['usuario']}.👈🏿")
-'''
-
-###########################################
-
-
-'''
-# Solicitar al usuario la contraseña
-while True:
-    contraseña = input("Introduce una contraseña: ")
-    if validar_contraseña(contraseña):
-        print("Contraseña válida.")
-        break
-    else:
-        print("La contraseña debe tener al menos 8 caracteres, incluir una mayúscula, una minúscula, un número y un carácter especial.")
-'''
-

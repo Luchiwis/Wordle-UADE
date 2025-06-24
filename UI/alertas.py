@@ -63,13 +63,15 @@ def recuadro(*args, **kwargs) -> None:
           desbordamiento visual.
         - Los caracteres Unicode utilizados son: ╔ ╗ ╚ ╝ ║ ═
     """
-    ancho = kwargs.get("ancho", 30)
-    margen = kwargs.get("margen", 0)
+    margen = kwargs.get("margen", 1)
+    ancho_default = max(map(lambda x:len(x), args)) + 2 + margen
+    ancho = max(kwargs.get("ancho", ancho_default), ancho_default)
     alinear = kwargs.get("alinear", "centro")
     continuo = kwargs.get("continuo", False)
     ancho_interno = ancho - 2
 
     alineados = {"centro": centrar, "izquierda": izquierda, "derecha": derecha}
+
 
     print("╔" + "═" * (ancho_interno) + "╗")
     for linea in args:
