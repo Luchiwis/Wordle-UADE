@@ -5,7 +5,7 @@ def procedimiento(func) -> callable:
     
     def wrapper(*args, **kwargs):
         func(*args, **kwargs)
-        input("-Enter para continuar-")
+        input("- Presione Enter para continuar -")
         
     return wrapper
 
